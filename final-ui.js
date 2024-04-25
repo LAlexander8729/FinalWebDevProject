@@ -48,6 +48,19 @@ const GenerateSchedule = (startDate, spanOfDays) => {
     const scheduleRoot = document.getElementById("true-schedule");
 
     let eventsFound = [];
+
+    //Add All Found Events
+    for (let index = 0; index < spanOfDays; index++) {
+        const columnDate = addDays(startDate, index);
+        eventsToRender.filter((event) => (columnDate <= event.endTime && columnDate >= event.startTime))
+            .forEach((event) => {
+
+                if (!eventsFound.includes(event.eventName)) {
+                    eventsFound.push(event.eventName);
+                }
+            });
+    }
+
     for (let index = 0; index < spanOfDays; index++) {
         const newColumn = document.createElement("div");
         newColumn.classList.add("schedule-column");
@@ -57,40 +70,100 @@ const GenerateSchedule = (startDate, spanOfDays) => {
         newColumn.setAttribute("style", "width:" + sizeOfColumn + "%");
 
         let blockIndex = 0;
-        let childrenToCreate = [];
 
         const columnDate = addDays(startDate, index);
-        eventsToRender.filter((event) => (columnDate <= event.endTime && columnDate >= event.startTime))
+
+        eventsToRender
+            .filter((event) => (columnDate <= event.endTime && columnDate >= event.startTime))
+            .sort((a, b) => eventsFound.indexOf(a.eventName) > eventsFound.indexOf(b.eventName) ? 1 : -1)
             .forEach((event) => {
+
                 const eventCard = document.createElement("div");
                 eventCard.classList.add("event-card");
 
                 const eventCardTitle = document.createElement("p");
                 eventCardTitle.textContent = event.eventName;
 
-                if (eventsFound.includes(event.eventName)) {
-                    while (blockIndex < eventsFound.indexOf(event.eventName)) {
-                        blockIndex++;
-                        const fillerCard = document.createElement("div");;
-                        fillerCard.classList.add("filler-card");
-                        newColumn.appendChild(fillerCard);
-                    }
-                } else {
-                    eventsFound.push(event.eventName);
+                const eventCardDescription = document.createElement("p");
+
+                while (blockIndex < eventsFound.indexOf(event.eventName)) 
+                {
+                    blockIndex++;
+                    const fillerCard = document.createElement("div");;
+                    fillerCard.classList.add("filler-card");
+                    newColumn.appendChild(fillerCard);
                 }
 
-                const eventCardTime = document.createElement("p");
-                eventCardTime.textContent = blockIndex + " - " + eventsFound.indexOf(event.eventName);
-                //eventCardTime.textContent = addDays(startDate, index).getUTCDate();
+                eventCardDescription.textContent = blockIndex + " - " + eventsFound.indexOf(event.eventName);
 
                 eventCard.appendChild(eventCardTitle);
-                eventCard.appendChild(eventCardTime);
+                eventCard.appendChild(eventCardDescription);
                 newColumn.appendChild(eventCard);
-                childrenToCreate.push({event: eventCard, index: eventsFound.indexOf(event.eventName)});
                 blockIndex++;
             });
-        childrenToCreate.sort((event, bevent) => event.index > bevent.index ? 1 : -1).forEach((event) => newColumn.appendChild(event.event));
     }
+
+    // let eventsFound = [];
+    // for (let index = 0; index < spanOfDays; index++) 
+    // {
+    //     eventsToRender.filter((event) => (columnDate <= event.endTime && columnDate >= event.startTime))
+    //         .forEach((event) => {
+
+    //             if (eventsFound.includes(event.eventName)) {
+    //                 while (blockIndex < eventsFound.indexOf(event.eventName)) {
+    //                     blockIndex++;
+    //                     const fillerCard = document.createElement("div");;
+    //                     fillerCard.classList.add("filler-card");
+    //                     newColumn.appendChild(fillerCard);
+    //                 }
+    //             } else {
+    //                 eventsFound.push(event.eventName);
+    //             }
+    // }
+
+    // for (let index = 0; index < spanOfDays; index++) {
+    //     const newColumn = document.createElement("div");
+    //     newColumn.classList.add("schedule-column");
+    //     scheduleRoot.appendChild(newColumn);
+    //     const daysUp = parseInt(spanOfDays) + 1;
+    //     const sizeOfColumn = 100 / daysUp;
+    //     newColumn.setAttribute("style", "width:" + sizeOfColumn + "%");
+
+    //     let blockIndex = 0;
+    //     let childrenToCreate = [];
+
+    //     const columnDate = addDays(startDate, index);
+    //     eventsToRender.filter((event) => (columnDate <= event.endTime && columnDate >= event.startTime))
+    //         .forEach((event) => {
+    //             const eventCard = document.createElement("div");
+    //             eventCard.classList.add("event-card");
+
+    //             const eventCardTitle = document.createElement("p");
+    //             eventCardTitle.textContent = event.eventName;
+
+    //             if (eventsFound.includes(event.eventName)) {
+    //                 while (blockIndex < eventsFound.indexOf(event.eventName)) {
+    //                     blockIndex++;
+    //                     const fillerCard = document.createElement("div");;
+    //                     fillerCard.classList.add("filler-card");
+    //                     newColumn.appendChild(fillerCard);
+    //                 }
+    //             } else {
+    //                 eventsFound.push(event.eventName);
+    //             }
+
+    //             const eventCardTime = document.createElement("p");
+    //             eventCardTime.textContent = blockIndex + " - " + eventsFound.indexOf(event.eventName);
+    //             //eventCardTime.textContent = addDays(startDate, index).getUTCDate();
+
+    //             eventCard.appendChild(eventCardTitle);
+    //             eventCard.appendChild(eventCardTime);
+    //             newColumn.appendChild(eventCard);
+    //             childrenToCreate.push({event: eventCard, index: eventsFound.indexOf(event.eventName)});
+    //             blockIndex++;
+    //         });
+    //     childrenToCreate.sort((event, bevent) => event.index > bevent.index ? 1 : -1).forEach((event) => newColumn.appendChild(event.event));
+    //}
 }
 
 const inputDateToStringDate = (inputDate) => {
