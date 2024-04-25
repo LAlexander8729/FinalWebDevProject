@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Final Scheduler</title>
 </head>
 <body>
+    <section>
+        <form id="schedule-search-form">
+            <label for="event-name-input">Date</label>
+            <input type="date" id="date-start-input">
+            <label for="event-name-input">Span Of Days</label>
+            <input type="number" id="date-span-input">
+            <input type="submit">
+        </form>
+    </section>
     <section id="main-scheduler">
-
+        <section id="search-terms"></section>
+        <section id="true-schedule"></section>
+    </section>
+    <section>
+        <form id="add-event-forms">
+            <label for="event-name-input">Name Of Event</label>
+            <input type="text" id="event-name-input">
+            <label for="event-name-input">Start Of Event</label>
+            <input type="date" id="event-start-input">
+            <label for="event-name-input">End Of Event</label>
+            <input type="date" id="event-end-input">
+            <input type="submit">
+        </form>
     </section>
 </body>
 

@@ -17,16 +17,16 @@ Overall, I think it will be a simple project, yet one that allows for enough com
   - Create very basic display for page 7 cards.
 
 ### April 13:
-  - ALlow the user to create events
+  - Allow the user to create events
   - Events are displayed on a schedule
   - Events have some optional features (such as RSVPs, & Guest Lists)
 
 ### April 20:
-  - Scheduled events are saved and stored through the API
+  - Scheduled events are saved and stored through the API.
   - Users can see other user's scheduled events.
   - Users can create their own schedule plan.
-  - User can filter mass schedule by tags/requirements
-  - Page can be hosted through Azure
+  - User can filter mass schedule by tags/requirements.
+  - Page can be hosted through Azure.
 
 ### April 26:
   - Project finished.

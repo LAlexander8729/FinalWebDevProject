@@ -1,0 +1,49 @@
+:root {
+    --main-background-color: #FFFCF2;
+    --schedule-column-color-one: #B2AEA9;
+    --schedule-column-color-two: #D4CEC4;
+    --scheduled-event-background: #ca8531;
+}
+
+#true-schedule {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    width: 100%;
+    overflow: scroll;
+    border-radius: 1em;
+    border-width: 0.1em;
+    border-style: solid;
+    margin: 1em;
+}
+
+.schedule-column {
+    padding: 0.3em;
+    text-align: center;
+    max-width: 12em;
+    transition: all 0.2s;
+    min-width: 7em;
+}
+
+.schedule-column:nth-child(even) {
+    background-color: var(--schedule-column-color-one);
+}
+
+.schedule-column:nth-child(odd) {
+    background-color: var(--schedule-column-color-two);
+}
+
+.filler-card,
+.event-card {
+    margin: 0.3em;
+    padding: 0.3em;
+    height: 5em;
+    border-style: dotted;
+    border-radius: 1em;
+    border-width: 0.1em;
+}
+
+.filler-card {
+    color: rgba(255, 255, 255, 0);
+}
