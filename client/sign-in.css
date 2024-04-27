@@ -1,0 +1,31 @@
+:root {
+    --main-background-color: #FFFCF2;
+    --schedule-column-color-one: #B2AEA9;
+    --schedule-column-color-two: #D4CEC4;
+    --scheduled-event-background: #ca8531;
+}
+
+body{
+    background-color: var(--main-background-color);
+    display: flex;
+    justify-content: center;
+}
+
+section, form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+}
+
+section {
+    border-style: solid;
+    border-radius: 1em;
+    margin: 3em;
+    max-width: 50em;
+}
+
+img {
+    padding-bottom: 3em;
+}

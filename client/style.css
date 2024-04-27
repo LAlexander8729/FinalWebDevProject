@@ -16,12 +16,14 @@
     border-width: 0.1em;
     border-style: solid;
     margin: 1em;
+    height: 40em;
+    width: 60em;
 }
 
 .schedule-column {
     padding: 0.3em;
     text-align: center;
-    max-width: 12em;
+    max-width: 15em;
     transition: all 0.2s;
     min-width: 7em;
 }
