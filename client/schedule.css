@@ -11,7 +11,7 @@
     --error-message: #c3294a;
 }
 
-body {
+body{
     background-color: var(--main-background-color);
     margin: 0;
     font-family: "Prompt", sans-serif;
@@ -50,52 +50,86 @@ header {
         'opsz' 24
 }
 
+
 #error-message
 {
     justify-content: left;
     align-items: left;
     width: 50%;
     background-color: var(--error-message);
-    height: 50%;
+    height: 70%;
     text-align: center;
     margin: 3em;
     justify-content: center;
     border-radius: 1em;
 }
 
-#account-link
-{
-    border-radius: 3em;
-    justify-content: right;
-}
-
 a {
     text-decoration: none;
 }
 
-input[type="button"], input[type="submit"]
-{
+
+#main-sign-in{
+    background-color: var(--scheduled-event-background);
+    margin: 2em;
     padding: 1em;
-    border-radius: 0.5em;
-    padding-left: 2em;
-    padding-right: 2em;
-    font-weight: 600;
-    font-size: large;
-    border-bottom-color: #23346C;
-    border-bottom-width: 0.3em;
-    transition: all 0.3s;
+    border-radius: 1em;
+    text-align: center;
 }
 
-input[type="button"]:hover, input[type="submit"]:hover
+#create-link
 {
-    border-color: #23346C;
-    border-width: 0.4em;
+    border-radius: 3em;
 }
 
-#main-sign-in {
+.add-event-forms
+{
     display: flex;
+    flex-direction: column;
+    max-width: 30em;
+}
+
+h3 {
+    font-style: italic;
+    font-weight: 300;
+}
+
+h1 {
+    margin-bottom: -0.4em;
+}
+
+.rsvp-list
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+}
+
+.rsvp-option
+{
+    display: flex;
+    margin: 0.5em;
+    flex-direction: row;
+    background-color: var(--schedule-column-color-two);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border-color: var(--true-background-color);
+    border: solid 0.15em;
+    transition: all 0.2s;
+}
+
+.rsvp-option:hover
+{
+    transform: scale(1.05);
+}
+
+input {
+    border-radius: 1em;
+    margin: 0.5em;
+    padding: 0.5em;
+    text-align: center;
+    transition: all 0.3s;
 }
 
 .header-link {
@@ -108,7 +142,7 @@ input[type="button"]:hover, input[type="submit"]:hover
     width: 15%;
     max-width: 10em;
     min-width: 5em;
-    text-wrap: balance;
+    text-wrap:balance;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -116,37 +150,29 @@ input[type="button"]:hover, input[type="submit"]:hover
     transition: all 0.3s;
 }
 
-.header-link:hover {
+input[type="button"], input[type="submit"]
+{
+    padding: 1em;
+    border-radius: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-weight: 600;
+    font-size: large;
+    border-bottom-color: #23346C;
+    border-bottom-width: 0.3em;
+}
+
+input:hover{
+    background-color: var(--schedule-column-color-one);
+}
+
+input[type="button"]:hover, input[type="submit"]:hover
+{
+    border-color: #23346C;
+    border-width: 0.4em;
+}
+
+.header-link:hover{
     background-color: var(--scheduled-event-background);
     color: var(--main-background-color);
-}
-
-section,
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2em;
-}
-
-#main-sign-in {
-    border-style: solid;
-    border-radius: 1em;
-    margin: 3em;
-    max-width: 50em;
-}
-
-input {
-    border-radius: 4em;
-    padding: 0.3em;
-    border-width: 0.1em;
-    text-align: center;
-    margin: 1em;
-}
-
-img {
-    border-radius: 1em;
-    border: solid 0.3em;
-    margin-bottom: 3em;
 }

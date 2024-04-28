@@ -53,3 +53,13 @@ export const SignIn = async(account) => {
         body: JSON.stringify(account)
     });
 }
+
+export const SignOut = async() => {
+    const response = await fetch(APIUrl + "/logout", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify("yes")
+    });
+}

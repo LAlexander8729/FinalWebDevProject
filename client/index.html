@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Final Scheduler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&family=Tauri&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body>
-    <header>
-        <a href="sign-in.html">Sign-In</a>
-        <a href="sign-in.html">Schedule An Event</a>
+    <header id="main-header">
+        <section id="schedule-search">
+            <form id="schedule-search-form">
+                <p>Schedule Search</p>
+                <label for="event-name-input">Date</label>
+                <input type="date" id="date-start-input">
+                <label for="event-name-input">Span Of Days</label>
+                <input type="number" id="date-span-input">
+                <input type="submit" value="Search">
+            </form>
+        </section>
+
+        <section id="header-link-section">
+            <a href="sign-in.html" id="account-link" class="header-link"></a>
+            <a href="index.html" id="schedule-link" class="header-link">
+                <span class="material-symbols-outlined">
+                    view_timeline
+                </span>
+                View Events
+            </a>
+            <a href="create-event.html" id="create-link" class="header-link">
+                <span class="material-symbols-outlined">
+                    add_circle
+                </span>
+                Schedule An Event
+            </a>
+        </section>
     </header>
-    <section>
-        <form id="schedule-search-form">
-            <p>Schedule Search</p>
-            <label for="event-name-input">Date</label>
-            <input type="date" id="date-start-input">
-            <label for="event-name-input">Span Of Days</label>
-            <input type="number" id="date-span-input">
-            <input type="submit">
-        </form>
-    </section>
     <section id="main-scheduler">
-        <section id="search-terms"></section>
         <section id="true-schedule"></section>
-    </section>
-    <section>
-        <form id="add-event-forms">
-            <label for="event-name-input">Name Of Event</label>
-            <input type="text" id="event-name-input">
-            <label for="event-name-input">Start Of Event</label>
-            <input type="date" id="event-start-input">
-            <label for="event-name-input">End Of Event</label>
-            <input type="date" id="event-end-input">
-            <input type="submit">
-        </form>
     </section>
     <footer></footer>
 </body>
 
 <script src="./src/final-ui.js" type="module"></script>
+
 </html>

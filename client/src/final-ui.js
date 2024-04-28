@@ -1,24 +1,34 @@
-import { SavedEvents, GetEventsInTimespan, addDays, addEvent, LoadData } from "./final-domain.js"
+import { SavedEvents, GetEventsInTimespan, addDays, addEvent, LoadData, GetAccount } from "./final-domain.js"
+import { GetSignIn } from "./final-service.js";
 
 await LoadData();
 
-const formRoot = document.getElementById("add-event-forms");
-const eventNameInput = document.getElementById("event-name-input");
-const eventStartInput = document.getElementById("event-start-input");
-const eventEndInput = document.getElementById("event-end-input");
-formRoot.addEventListener("submit", (event) => {
-    event.preventDefault();
-    addEvent(eventStartInput.value, eventEndInput.value, eventNameInput.value);
-    clearSchedule();
-    GenerateSchedule(inputDateToStringDate(dateTimeToSearch), dayTimeSpan);
-})
+const signinlink = document.getElementById("account-link");
+const accountImage = document.createElement("span");
+accountImage.classList.add("material-symbols-outlined")
+accountImage.textContent = "person";
+
+signinlink.appendChild(accountImage);
+
+const signInText = document.createElement("p");
+
+console.log(await GetAccount());
+if((await GetAccount()) !== null)
+{
+    console.log(await GetAccount());
+    signInText.textContent = (await GetAccount()).userName;
+} else {
+    signInText.textContent = "Sign In"
+}
+
+signinlink.appendChild(signInText);
 
 const searchFormRoot = document.getElementById("schedule-search-form");
 const startDateInput = document.getElementById("date-start-input");
 const dateSpanInput = document.getElementById("date-span-input");
 
 var dateTimeToSearch = new Date(Date.now());
-var dayTimeSpan = 7;
+var dayTimeSpan = 14;
 
 const month = new Date(Date.now()).getMonth() + 1;
 const date = new Date(Date.now()).getDate();
@@ -26,7 +36,7 @@ const monthDay = month < 10 ? "0" + month : month;
 const dateDay = date < 10 ? "0" + date : date;
 
 startDateInput.value = new Date(Date.now()).getFullYear() + "-" + monthDay + "-" + dateDay;
-dateSpanInput.value = 7;
+dateSpanInput.value = 14;
 
 searchFormRoot.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -45,7 +55,7 @@ const clearSchedule = () => {
     }
 }
 
-const GenerateSchedule = (startDate, spanOfDays) => {
+const GenerateSchedule = async (startDate, spanOfDays) => {
     const eventsToRender = GetEventsInTimespan(startDate, spanOfDays);
     const scheduleRoot = document.getElementById("true-schedule");
 
@@ -67,6 +77,7 @@ const GenerateSchedule = (startDate, spanOfDays) => {
         const newColumn = document.createElement("div");
 
         const columnHeader = document.createElement("header");
+        columnHeader.classList.add("column-header");
         const headerDate = document.createElement("h1");
 
         const columnDate = addDays(startDate, index);

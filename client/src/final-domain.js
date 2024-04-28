@@ -4,6 +4,8 @@ let SavedEvents = [];
 
 let SavedUsers = [];
 
+let currentSignIn = null;
+
 const LoadData = async () => {
     SavedEvents = await GetAllUserEvents();
     SavedUsers = await GetAllUsers();
@@ -25,14 +27,14 @@ const addDays = (date, addDays) => {
     return newDate;
 }
 
-const addEvent = async (startDate, endDate, nameOfEvent) => 
+const addEvent = async (startDate, endDate, nameOfEvent, host, guestsInvited) => 
 {
     const newEvent = {
         "eventName": nameOfEvent,
         "startTime": new Date(new Date(startDate).toUTCString()),
         "endTime": new Date(new Date(endDate).toUTCString()),
-        "hostingUser": "Bilbo Baggins",
-        "invitedUsers": ["all"],
+        "hostingUser": host,
+        "invitedUsers": guestsInvited,
         "usersRSVP": ["off"],
     }
     await AddUserEvent(newEvent);
@@ -71,10 +73,25 @@ export const CheckSignIn = async (username, password) => {
     console.log(userToSignIn);
     await SignIn(userToSignIn);
     SavedUsers = await GetAllUsers();
-    console.log(await GetSignIn());
+    location.reload();
+}
+
+export const GetAccount = async () => {
+    if(currentSignIn === null)
+    {
+        let newAccount = await GetSignIn();
+        if(newAccount !== null)
+        {
+            currentSignIn = newAccount;
+        } else {
+            return null;
+        }
+    } else {
+        return currentSignIn;
+    }
 }
 
 export {SavedEvents, GetEventsInTimespan, 
     addDays, addEvent, LoadData, 
     CheckForExistingUser, CreateNewUser,
-    CheckForValidSignIn};
+    CheckForValidSignIn, SavedUsers};

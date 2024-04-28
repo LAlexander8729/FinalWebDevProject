@@ -61,6 +61,10 @@ app.MapPost("/currentUser", (User msg) =>
     currentUser = msg;
 });
 
+app.MapPost("/logout", () => {
+    currentUser = null;
+});
+
 app.Run();
 
 public record User(string userName, string password);
