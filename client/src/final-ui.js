@@ -27,6 +27,21 @@ const searchFormRoot = document.getElementById("schedule-search-form");
 const startDateInput = document.getElementById("date-start-input");
 const dateSpanInput = document.getElementById("date-span-input");
 
+searchFormRoot.addEventListener("dragover", (event) => {
+    event.preventDefault();
+});
+
+searchFormRoot.addEventListener("dragleave", (event) => {
+    event.preventDefault();
+});
+
+searchFormRoot.addEventListener("drop", (event) => {
+    const newDate = new Date(event.dataTransfer.getData("text/plain"));
+    let newMonth = newDate.getMonth() < 9 ? "0" + (newDate.getMonth() + 1) : (newDate.getMonth() + 1);
+    let newDay = newDate.getDate() < 10 ? "0" + (newDate.getDate()) : newDate.getDate();
+    startDateInput.value = newDate.getFullYear() + "-" + newMonth + "-" + newDay;
+});
+
 var dateTimeToSearch = new Date(Date.now());
 var dayTimeSpan = 14;
 
@@ -85,6 +100,12 @@ const GenerateSchedule = async (startDate, spanOfDays) => {
 
         columnHeader.appendChild(headerDate);
         newColumn.appendChild(columnHeader);
+
+        columnHeader.setAttribute("draggable", "true");
+
+        columnHeader.addEventListener("dragstart", (event) => {
+            event.dataTransfer.setData("text/plain", columnDate);
+        });
 
         newColumn.classList.add("schedule-column");
         scheduleRoot.appendChild(newColumn);
