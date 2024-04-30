@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uCYzrqYU/XCrnHd2wFk81FBlmVosq8R+01A0bh151J/c0eq0Ct+Uy0wRKz9bygmSqxpJOZPBP6qRbwdinMhTPA==",
+  "dgSpecHash": "DOJ+PkQHsiwNHk9fR3I98j8SkgqAVOWt9MzSM7fQIsIKBrQchJqAI5TLO0ekWf7r5zzG7HbUnh8shuDbc6qoGQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Luke Alexander\\Documents\\WebDevPrograms\\FinalWebDevProject\\api\\api.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Luke Alexander\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\Luke Alexander\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\Luke Alexander\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\Luke Alexander\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.18\\microsoft.netcore.app.host.win-x64.7.0.18.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\luke.alexander\\Documents\\FinalWebDevProject\\api\\api.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
