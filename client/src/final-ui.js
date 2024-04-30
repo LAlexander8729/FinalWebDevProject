@@ -125,9 +125,11 @@ const GenerateSchedule = async (startDate, spanOfDays) => {
                 eventCard.classList.add("event-card");
 
                 const eventCardTitle = document.createElement("p");
+                eventCardTitle.classList.add("card-title");
                 eventCardTitle.textContent = event.eventName;
 
                 const eventCardDescription = document.createElement("p");
+                eventCardDescription.classList.add("card-maker");
 
                 while (blockIndex < eventsFound.indexOf(event.eventName)) 
                 {

@@ -60,6 +60,10 @@ const CreateScheduleForm = async () => {
     submitButton.setAttribute("type", "submit");
     submitButton.setAttribute("value", "Create Event")
 
+    const resetButton = document.createElement("input");
+    resetButton.setAttribute("type", "reset");
+    resetButton.setAttribute("value", "Clear")
+
     formRoot.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (eventStartInput.value === "") {
@@ -93,6 +97,7 @@ const CreateScheduleForm = async () => {
     formRoot.appendChild(whosInvited);
     formRoot.appendChild(rsvpList);
     formRoot.appendChild(submitButton);
+    formRoot.appendChild(resetButton);
 }
 
 const CreateSignInMessage = () => {

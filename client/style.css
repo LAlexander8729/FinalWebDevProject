@@ -28,7 +28,6 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 10em;
     color: var(--main-background-color);
 }
 
@@ -57,10 +56,36 @@ a {
     min-width: 5em;
     text-wrap:balance;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     transition: all 0.3s;
+}
+
+@media only screen and (max-width: 1200px)
+{
+    header {
+        flex-direction: column;
+    }
+
+    #header-link-section {
+        align-items: center;
+        justify-items: center;
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (min-width: 1200px)
+{
+    header {
+        flex-direction: row;
+        height: 10em;
+    }
+
+    #header-link-section {
+        width: 45%;
+        align-items: right;
+        justify-items: right;
+    }
 }
 
 .header-link:hover{
@@ -106,9 +131,6 @@ input {
 }
 
 #header-link-section {
-    width: 45%;
-    justify-items: right;
-    align-items: right;
     flex-direction: row-reverse;
     display: flex;
 }
@@ -117,6 +139,20 @@ input {
     text-align: center;
     transition: all 0.2s;
     min-width: 12em;
+}
+
+.card-title
+{
+    font-size: large;
+    font-weight: 550;;
+}
+
+.card-maker
+{
+    font-weight: 300;
+    font-size: medium;
+    font-style: italic;
+    margin-top: -0.5em;
 }
 
 .schedule-column:nth-child(even) {
